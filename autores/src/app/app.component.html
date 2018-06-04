@@ -1,25 +1,25 @@
 <div class="row">
-  <div class="col-sm-1"></div>
+  <div class="col-sm-1" ></div>
   <div class="col-sm-5">
     <ngb-carousel *ngIf="images">
       <ng-template ngbSlide>
         <img [src]="images[0]" alt="Random first slide">
         <div class="carousel-caption">
-          <h3>10 seconds between slides...</h3>
+          <h3><b>{{Titulo}}</b></h3>
           <p>This carousel uses customized default values.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
         <img [src]="images[1]"  alt="Random second slide">
         <div class="carousel-caption">
-          <h3>No keyboard...</h3>
+          <h3><b>{{Titulo}}</b></h3>
           <p>This carousel uses customized default values.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
         <img [src]="images[2]" alt="Random third slide">
         <div class="carousel-caption">
-          <h3>And no wrap after last slide.</h3>
+          <h3><b>{{Titulo}}</b></h3>
           <p>This carousel uses customized default values.</p>
         </div>
       </ng-template>
@@ -27,37 +27,237 @@
   </div>
   <div class="col-sm-1"></div>
   <div class="col-sm-5">
-    <h1>Crear autor</h1>
-    <p><b>Nombres:</b>
-      <br>
-      <b>Apellidos:</b>
-      <br>
-      <b>Fecha de nacimiento:</b>
-      <br>
-      <b>Numero Libros:</b>
-      <br>
-      <b>Ecuatoriano:</b>
-    </p>
+    <div class="row" align="center">
+      <div class="col-sm"><h1> Crear autor</h1></div>
+    </div>
+    <div class="row">
+      <div class="col-sm"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10"><div class="example-container">
+        <mat-form-field>
+          <input #nom matInput placeholder="Nombres" >
+        </mat-form-field>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10"><div class="example-container">
+        <mat-form-field>
+          <input #ape matInput placeholder="Apellidos">
+        </mat-form-field>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10"><div class="example-container">
+        <mat-form-field>
+          <input #fech matInput placeholder="Fecha de nacimiento">
+        </mat-form-field>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10"><div class="example-container">
+        <mat-form-field>
+          <input #num matInput placeholder="Numero de libros">
+        </mat-form-field>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10"><div class="example-container">
+        <mat-form-field>
+          <input #ecu matInput placeholder="Ecuatoriano">
+        </mat-form-field>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="col-sm"><br></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"><button mat-button color="primary" (click)="nom.value ='';ape.value='';fech.value = '';num.value='';ecu.value='' ">Limpiar</button></div>
+      <div class="col-sm-3"><button mat-button color="primary" (click)="crearAutor(nom.value.toString(),ape.value.toString(),fech.value.toString(),num.value.toString(),ecu.value.toString())">Crear</button></div>
+    </div>
+    </div>
+
+
+</div>
+<br>
+<br>
+<br>
+<div class="row" align="center">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(0)">{{arregloAutores[0].nombres}}</button></div>
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(1)">{{llenarBoton(1)}}</button></div>
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(2)">{{llenarBoton(2)}}</button></div>
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(3)">{{llenarBoton(3)}}</button></div>
+    </div>
   </div>
-  
+  <div class="col-sm-12"><br> <br></div>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(4)">{{llenarBoton(4)}}</button></div>
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(5)">{{llenarBoton(5)}}</button></div>
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(6)">{{llenarBoton(6)}}</button></div>
+      <div class="col-sm-3"><button mat-stroked-button (click)="llenarCarrusel(7)">{{llenarBoton(7)}}</button></div>
+    </div>
+  </div>
+
 </div>
+<br>
+<br>
 <br>
 <div class="row">
-  <div class="col-sm-3">1</div>
-  <div class="col-sm-3">2</div>
-  <div class="col-sm-3">3</div>
-  <div class="col-sm-3">4</div>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-11"><h1><b>Libros</b> <br></h1></div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="ICBN" #icbn>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Nombre" #nomL>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Numero de paginas" #numL>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Edicion" #ediL>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Fecha de publicacion" #fechL>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Nombre de la editorial" #editoL>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                  <input type="text" pInputText placeholder="Autor ID" #autL>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm"><br></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <button pButton type="button" label="Limpiar" (click)="icbn.value='';numL.value='';nomL.value='';fechL.value='';editoL.value='';ediL.value='';autL.value=''"></button>
+          </div>
+          <div class="col-sm-3">
+            <button pButton type="button" label="Insertar" (click)="crearLibros(icbn.value.toString(),nomL.value.toString(),numL.value.toString(),ediL.value.toString(),fechL.value.toString(),editoL.value.toString(),autL.value.toString())"></button>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+      <div class="col-sm-6" align="center">
+        <p-card [title]="tit" [style]="{width: '360px'}">
+          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+        </p-card>
+
+        <br>
+      </div>
+    </div>
+  </div>
 </div>
+<br>
+<br>
+<br>
 <br>
 <div class="row">
-  <div class="col-sm-6">1</div>
-  <div class="col-sm-6">2</div>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3 class="first">Lista de libros</h3>
+    <p-table [value]="arregloBook" id="tablita" >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>icbn</th>
+          <th>Nombre</th>
+          <th>Numero de paginas</th>
+          <th>Edicion</th>
+          <th>Fecha de publicacion</th>
+          <th>Nombre de la editorial</th>
+          <th>Autor ID</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-autor #body>
+        <tr (click)="llenarCard()" id="filita">
+          <td >{{autor.icbn}}</td>
+          <td id="celda">{{autor.nombre}}</td>
+          <td>{{autor.numeroPaginas}}</td>
+          <td>{{autor.edicion}}</td>
+          <td>{{autor.fechaPublicacion}}</td>
+          <td>{{autor.nombreEditorial}}</td>
+          <td>{{autor.autorId}}</td>
+        </tr>
+
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="col-sm-11"></div>
 </div>
 <br>
-<div class="row">
-  <div class="col-sm">1</div>
-</div>
-<br>
+
+
+
 
 
 
