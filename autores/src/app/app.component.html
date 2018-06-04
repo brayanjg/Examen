@@ -106,11 +106,11 @@
 <br>
 <br>
 <br>
-<div class="row">
+<div class="row" >
   <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-1"></div>
-      <div class="col-sm-11"><h1><b>Libros</b> <br></h1></div>
+      <div class="col-sm-11"><h1><b>Crear libros</b> <br></h1></div>
     </div>
   </div>
   <div class="col-sm-12">
@@ -122,7 +122,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="ICBN" #icbn>
+                  <input type="text" pInputText placeholder="ICBN" #icbn [disabled]="boolCrearLibros">
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="Nombre" #nomL>
+                  <input type="text" pInputText placeholder="Nombre" #nomL [disabled]="boolCrearLibros">
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="Numero de paginas" #numL>
+                  <input type="text" pInputText placeholder="Numero de paginas" #numL [disabled]="boolCrearLibros">
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="Edicion" #ediL>
+                  <input type="text" pInputText placeholder="Edicion" #ediL [disabled]="boolCrearLibros">
                 </div>
               </div>
             </div>
@@ -166,7 +166,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="Fecha de publicacion" #fechL>
+                  <input type="text" pInputText placeholder="Fecha de publicacion" #fechL [disabled]="boolCrearLibros">
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="Nombre de la editorial" #editoL>
+                  <input type="text" pInputText placeholder="Nombre de la editorial" #editoL [disabled]="boolCrearLibros">
                 </div>
               </div>
             </div>
@@ -188,7 +188,7 @@
             <div class="ui-g ui-fluid">
               <div class="ui-g-12 ui-md-4">
                 <div class="ui-inputgroup">
-                  <input type="text" pInputText placeholder="Autor ID" #autL>
+                  <input type="text" pInputText [placeholder]="autorID" #autL disabled="true" >
                 </div>
               </div>
             </div>
@@ -202,7 +202,7 @@
             <button pButton type="button" label="Limpiar" (click)="icbn.value='';numL.value='';nomL.value='';fechL.value='';editoL.value='';ediL.value='';autL.value=''"></button>
           </div>
           <div class="col-sm-3">
-            <button pButton type="button" label="Insertar" (click)="crearLibros(icbn.value.toString(),nomL.value.toString(),numL.value.toString(),ediL.value.toString(),fechL.value.toString(),editoL.value.toString(),autL.value.toString())"></button>
+            <button pButton type="button" label="Insertar" (click)="crearLibros(icbn.value.toString(),nomL.value.toString(),numL.value.toString(),ediL.value.toString(),fechL.value.toString(),editoL.value.toString(),[autorID])"></button>
           </div>
           <div class="col-sm-3"></div>
         </div>
@@ -210,7 +210,10 @@
       <div class="col-sm-6" align="center">
         <p-card [title]="tit" [style]="{width: '360px'}">
           <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+            <br> <b>{{descripcion}}</b>
+
+          </div>
         </p-card>
 
         <br>
@@ -239,22 +242,24 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-autor #body>
-        <tr (click)="llenarCard()" id="filita">
-          <td >{{autor.icbn}}</td>
-          <td id="celda">{{autor.nombre}}</td>
+        <tr (click)="tit=autor.nombre; descripcion= 'El autor es: ' + arregloAutores[autor.autorId].nombres">
+          <td>{{autor.icbn}}</td>
+          <td id="cell0">{{autor.nombre}}</td>
           <td>{{autor.numeroPaginas}}</td>
           <td>{{autor.edicion}}</td>
           <td>{{autor.fechaPublicacion}}</td>
           <td>{{autor.nombreEditorial}}</td>
           <td>{{autor.autorId}}</td>
-        </tr>
 
+        </tr>
       </ng-template>
     </p-table>
   </div>
-  <div class="col-sm-11"></div>
+  <div class="col-sm-1"></div>
 </div>
 <br>
+
+
 
 
 

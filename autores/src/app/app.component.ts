@@ -1,6 +1,7 @@
 import {Component, OnInit, Pipe} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {count, map} from 'rxjs/operators';
+import {collectExternalReferences} from "@angular/compiler";
 
 
 
@@ -13,9 +14,13 @@ import {count, map} from 'rxjs/operators';
 
 
 export class AppComponent implements OnInit{
+  descripcion= ' '
 
+  boolCrearLibros = true;
+  autorID = 'Autor ID'
+  nombre = '';
   images: Array<string>;
-  tit='asdf'
+  tit='Presione sobre algun Libro para ver mas detalles'
   arregloBook = [
     {
       icbn:'235432',
@@ -24,7 +29,7 @@ export class AppComponent implements OnInit{
       edicion: 'segunda',
       fechaPublicacion: '1940',
       nombreEditorial: 'x',
-      autorId:1
+      autorId:0
     }
   ];
 
@@ -92,7 +97,10 @@ export class AppComponent implements OnInit{
       alert('Este boton esta vacio')
     }
     else
-    {this.Titulo = this.arregloAutores[boton].nombres+' '+ this.arregloAutores[boton].apellidos}
+    {this.Titulo = this.arregloAutores[boton].nombres+' '+ this.arregloAutores[boton].apellidos
+    this.boolCrearLibros = false;
+    this.autorID = boton
+    }
     }
 
   crearLibros (icbnL,nombreL,numeroPaginaL,edicionL,fechaL,editorialL,autorL){
@@ -110,9 +118,8 @@ export class AppComponent implements OnInit{
     return this.arregloBook
   }
 
-  llenarCard (){
-    this.tit = document.getElementById("celda").innerText
-  }
+
+
 
 }
 
