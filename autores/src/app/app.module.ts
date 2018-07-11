@@ -15,6 +15,11 @@ import { ModeloPapaComponent } from './modelo-papa/modelo-papa.component';
 import { ModeloHijoComponent } from './modelo-hijo/modelo-hijo.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import {app_routing} from "./app.routes";
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
+import { CardPadreComponent } from './card-padre/card-padre.component';
+import { CardHijoComponent } from './card-hijo/card-hijo.component';
+
 
 
 @NgModule({
@@ -23,7 +28,9 @@ import {app_routing} from "./app.routes";
     HomeComponent,
     ModeloPapaComponent,
     ModeloHijoComponent,
-    CarritoComponent
+    CarritoComponent,
+    CardPadreComponent,
+    CardHijoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,10 @@ import {app_routing} from "./app.routes";
     ButtonModule,
     CardModule,
     TableModule,
-    app_routing
+    app_routing,
+    MatBadgeModule,
+    MatIconModule,
+    HttpClientModule
 
 
 
