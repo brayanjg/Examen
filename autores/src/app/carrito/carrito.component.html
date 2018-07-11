@@ -1,5 +1,108 @@
-<p>
-  carrito works!
-</p>
 <br>
-<button mat-button>Click me!</button>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div class="row">
+      <div class="col-sm-5" align="right">imagen</div>
+      <div class="col-sm-2">Foto</div>
+      <div class="col-sm-3" align="left">Nombre Usuario</div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm">Datos de la cuenta</div>
+        </div>
+        <div class="row">
+          <div class="col-sm">------datos-----</div>
+        </div>
+        <div class="row">
+          <div class="col-sm">-----direccion----------</div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <button mat-button>Completar la orden</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm">Datos de facturacion</div>
+        </div>
+        <div class="row">
+          <div class="col-sm">------datos-----</div>
+        </div>
+        <div class="row">
+          <div class="col-sm">-----direccion----------</div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <ng-template #content let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <div class="input-group">
+                  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                      <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+          </div>
+        </ng-template>
+
+        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+        <hr>
+
+        <pre>{{closeResult}}</pre>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">Componentes</div>
+  <div class="col-sm-2"></div>
+</div>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8"></div>
+  <div class="col-sm-2">TOTAL: XXXX</div>
+
+</div>
