@@ -9,19 +9,21 @@ import {MatInputModule} from '@angular/material/input';
 import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
 import {TableModule} from 'primeng/table';
-
-
-
-
-
-
-
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { ModeloPapaComponent } from './modelo-papa/modelo-papa.component';
+import { ModeloHijoComponent } from './modelo-hijo/modelo-hijo.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import {app_routing} from "./app.routes";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ModeloPapaComponent,
+    ModeloHijoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { AppComponent } from './app.component';
     ButtonModule,
     CardModule,
     TableModule,
+    app_routing
 
 
 
