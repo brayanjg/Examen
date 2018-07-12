@@ -19,6 +19,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from '@angular/material/icon';
 import { CardPadreComponent } from './card-padre/card-padre.component';
 import { CardHijoComponent } from './card-hijo/card-hijo.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -46,7 +47,8 @@ import { CardHijoComponent } from './card-hijo/card-hijo.component';
     app_routing,
     MatBadgeModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
 
 
 

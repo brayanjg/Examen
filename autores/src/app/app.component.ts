@@ -14,6 +14,7 @@ import {collectExternalReferences} from "@angular/compiler";
 
 
 export class AppComponent implements OnInit{
+  public compras =0
   descripcion= ' '
 
   boolCrearLibros = true;

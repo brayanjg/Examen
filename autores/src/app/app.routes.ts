@@ -7,8 +7,15 @@ import {CarritoComponent} from "./carrito/carrito.component";
 
 const app_routes: Routes =[
   {path: 'Home', component: HomeComponent },
-  {path: 'ModeloPapa', component: ModeloPapaComponent },
-  {path: 'ModeloHijo', component: ModeloHijoComponent },
+  {path: 'ModeloPapa/:id',
+    component: ModeloPapaComponent,
+  children:[
+    {
+      path: 'ModeloHijo',
+      component: ModeloHijoComponent
+    }
+  ]
+  },
   {path: 'Carrito', component: CarritoComponent },
   {path: '**', pathMatch: 'full', redirectTo:'Home'}
 ];
