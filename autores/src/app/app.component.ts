@@ -1,7 +1,6 @@
-import {Component, OnInit, Pipe} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, Pipe, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {count, map} from 'rxjs/operators';
-import {collectExternalReferences} from "@angular/compiler";
+import {ModeloHijoComponent} from "./modelo-hijo/modelo-hijo.component";
 
 
 
@@ -14,9 +13,11 @@ import {collectExternalReferences} from "@angular/compiler";
 
 
 export class AppComponent implements OnInit{
-  public compras =0
-  descripcion= ' '
+  busquedaCompras
+  @ViewChild(ModeloHijoComponent) message: ModeloHijoComponent;
 
+  @Input() public compras= 0
+  descripcion= ' '
   boolCrearLibros = true;
   autorID = 'Autor ID'
   nombre = '';
@@ -34,16 +35,13 @@ export class AppComponent implements OnInit{
     }
   ];
 
-
-
-  constructor(private _http: HttpClient) {}
-
   ngOnInit() {
-    this._http.get('https://picsum.photos/list')
-      .pipe(map((images: Array<{id: number}>) => this._randomImageUrls(images)))
-      .subscribe(images => this.images = images);
-
+    this.carritoCompras()
   }
+  constructor( private http: HttpClient) {}
+
+
+
 
   private _randomImageUrls(images: Array<{id: number}>): Array<string> {
 
@@ -65,7 +63,6 @@ export class AppComponent implements OnInit{
   ecuatoriano: false
 }
 ];
-
 
 
   crearAutor (nombre,apellido,fecha,numero,ecuatoriano){
@@ -121,6 +118,17 @@ export class AppComponent implements OnInit{
 
 
 
+
+  carritoCompras(){
+    this.http.get(`http://localhost:1337/compras`)
+      .subscribe(
+        (dataAut:any[]) => {
+          console.log(dataAut)
+          this.busquedaCompras = dataAut
+        }
+
+      )
+  }
 
 }
 

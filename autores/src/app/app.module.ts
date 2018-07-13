@@ -21,6 +21,8 @@ import { CardPadreComponent } from './card-padre/card-padre.component';
 import { CardHijoComponent } from './card-hijo/card-hijo.component';
 import {MatCardModule} from '@angular/material/card';
 
+import {DialogModule} from 'primeng/dialog';
+
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import {MatCardModule} from '@angular/material/card';
     MatBadgeModule,
     MatIconModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    DialogModule
 
 
 

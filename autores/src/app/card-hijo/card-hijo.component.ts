@@ -6,6 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./card-hijo.component.css']
 })
 export class CardHijoComponent implements OnInit {
+  @Input() compras=0
 
   @Input() public nombre= ""
   @Input() public fecha= ""

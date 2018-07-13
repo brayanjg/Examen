@@ -10,6 +10,10 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ModeloPapaComponent implements OnInit {
   busqueda
+  busquedaLibros
+  busquedaCompras
+  mensaje=" "
+  listaComp
   public movimiento;
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +29,9 @@ export class ModeloPapaComponent implements OnInit {
 
       });
     this.buscarAutorLibro()
+    this.buscarLibro()
+    this.carritoCompras()
+    this.getCodigoCompra()
   }
 
   mostrarId(){
@@ -44,6 +51,58 @@ export class ModeloPapaComponent implements OnInit {
       )
 
   }
+  buscarLibro(){
+
+    this.http.get(`http://localhost:1337/libro?autorId=${this.movimiento}`)
+      .subscribe(
+        (dataAut:any[]) => {
+          console.log(dataAut)
+          this.busquedaLibros = dataAut
+          if(this.busquedaLibros.length==0){
+            this.mensaje= "No existen registros"
+          }
+          else{
+            if(this.busquedaLibros.length>8){
+              document.getElementById("botonCargarMas").hidden = false
+            }
+          }
+        }
+
+      )
+
+  }
+  getCodigoCompra(){
+
+    this.http.get(`http://localhost:1337/listacompra`)
+      .subscribe(
+        (dataAut:any[]) => {
+          console.log(dataAut)
+          this.listaComp = dataAut
+        }
+
+      )
+  }
+  carritoCompras(){
+    this.http.get(`http://localhost:1337/listacompra`)
+      .subscribe(
+        (dataAut:any[]) => {
+          this.http.get(`http://localhost:1337/compras?idCompra=${dataAut.length}`)
+            .subscribe(
+              (dataAut:any[]) => {
+                console.log(dataAut)
+                this.busquedaCompras = dataAut
+              }
+
+            )
+        }
+
+      )
+
+  }
 
 
 }
+
+
+
+

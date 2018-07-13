@@ -1,28 +1,77 @@
+<br>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div class="row">
+      <div class="col-sm-5" align="right">
 
+      </div>
+      <div class="col-sm-2" align="right">
+        <mat-icon [matBadge]="busquedaCompras.length" matBadgeColor="warn" routerLink="/Carrito" >shopping_cart</mat-icon>
+      </div>
+      <div class="col-sm-3">
+        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" alt="" style="height: 30px" routerLink="/Home">
+        Usuario</div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
 <div class="row">
   <div class="col-sm-2"></div>
-  <div class="col-sm-8"><h1>Atributos</h1></div>
+  <div class="col-sm-8"><h3>{{busqueda[0].nombres}} {{busqueda[0].apellidos}}</h3></div>
   <div class="col-sm-2"></div>
 </div>
+<br>
 <br>
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <div class="row">
-      <div class="col-sm">COMPONENTE</div>
-    </div>
-    <div class="row">
-      <div class="col-sm">
-        <button mat-button>Añadir al carrito</button>
+        <div class="card bg-light mb-3" style="max-width: 700rem;">
+          <div class="card-header">{{busquedaLibros[0].nombre}}</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2">
+                <img [src]="busquedaLibros[0].imgLibro" style="height: 80px">
+              </div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <strong>ICBN: </strong>{{busquedaLibros[0].icbn}}
+                    <br>
+                    <strong>Num. de páginas: </strong>{{busquedaLibros[0].numeroPaginas}}
+                    <br>
+                    <strong>Edición: </strong>{{busquedaLibros[0].edicion}}
+                  </div>
+                  <div class="col-sm-4">
+                    <strong>Fecha de publicación: </strong>{{busquedaLibros[0].fechaPublicacion}}
+                    <br>
+                    <strong>Nombre de la editorial: </strong>{{busquedaLibros[0].nombreEditorial}}
+                  </div>
+                  <div class="col-sm-4"></div>
+                </div>
+              </div>
       </div>
     </div>
+</div>
   </div>
   <div class="col-sm-2"></div>
+
 </div>
+
+
+
 <br>
 <div class="row">
   <div class="col-sm-2"></div>
-  <div class="col-sm-8">IMAGEN NO DISPONIBLE</div>
+  <div class="col-sm-8" align="center">
+    <button pButton type="button"  label="Añadir al carrito"  class="ui-button-info" (click)="comprar()" routerLink="/home"></button>
+  </div>
   <div class="col-sm-2"></div>
+
 </div>
+
 

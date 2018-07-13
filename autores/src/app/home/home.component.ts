@@ -20,12 +20,16 @@ export class HomeComponent implements OnInit {
   flag: boolean
   resultadosAut
   resultadosLib
-
+  busquedaCompras
+  listaComp
+  idCompra=0
   constructor(private http: HttpClient)
   {
     }
 
   ngOnInit() {
+
+    this.carritoCompras()
   }
 getAutor (){
     this.http.get(`http://localhost:1337/autor`).subscribe((data:any [])=>{console.log(data)})
@@ -90,6 +94,32 @@ getAutor (){
         document.getElementById("botonLibro").hidden= false
       }
     }
+  }
+  getCodigoCompra(){
+    this.http.get(`http://localhost:1337/listacompra`)
+      .subscribe(
+        (dataAut:any[]) => {
+          console.log(dataAut)
+          this.listaComp = dataAut
+        }
+
+      )
+  }
+  carritoCompras(){
+    this.http.get(`http://localhost:1337/listacompra`)
+      .subscribe(
+        (dataAut:any[]) => {
+          this.http.get(`http://localhost:1337/compras?idCompra=${dataAut.length}`)
+            .subscribe(
+              (dataAut:any[]) => {
+                this.busquedaCompras = dataAut
+              }
+
+            )
+        }
+
+      )
+
   }
 
 

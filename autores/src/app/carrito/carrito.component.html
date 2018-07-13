@@ -1,22 +1,92 @@
+<br>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div class="row">
+      <div class="col-sm-5" align="right">
 
+      </div>
+      <div class="col-sm-2" align="right">
+        <mat-icon [matBadge]="busquedaCompras.length" matBadgeColor="warn" routerLink="/Carrito" >shopping_cart</mat-icon>
+      </div>
+      <div class="col-sm-3">
+        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" alt="" style="height: 30px" routerLink="/Home">
+        Usuario</div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-sm">Datos de la cuenta</div>
-        </div>
-        <div class="row">
-          <div class="col-sm">------datos-----</div>
-        </div>
-        <div class="row">
-          <div class="col-sm">-----direccion----------</div>
-        </div>
+
+    <div class="card">
+      <h5 class="card-header" style="background-color: aquamarine">Datos de la cuenta</h5>
+      <div class="card-body">
+       <div class="row">
+         <div class="col-sm-5">
+           <strong>Usuario: </strong>{{usuario}}
+           <br>
+           <strong>Ubicacion: </strong>{{ubicacion}}
+         </div>
+         <div class="col-sm-5">
+           <strong>Nombres: </strong>Brayan
+           <br>
+           <strong>Apellidos: </strong>Jimenez
+         </div>
+         <div class="col-sm-2" align="center">
+           <button pButton type="button"  label="Completar la orden"  (click)="completarOrden()" routerLink="/Home"></button>
+         </div>
+       </div>
       </div>
-      <div class="col-sm-6">
-        <br>
-        <button mat-button>Completar la orden</button>
+    </div>
+
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <div class="card">
+      <h5 class="card-header" style="background-color: beige">Datos de facturación</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-5">
+            <strong>Nombres: </strong>{{nombres}}
+            <br>
+            <strong>Apellidos: </strong>{{apellidos}}
+            <br>
+            <strong>Email: </strong>{{email}}
+          </div>
+          <div class="col-sm-5">
+          <strong>Cedula: </strong>{{cedula}}
+            <br>
+          <strong>Direccion: </strong>{{direccion}}
+
+        </div>
+          <div class="col-sm-2" align="center">
+            <p-dialog header="Editar Información" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70"
+                      maximizable="true" [baseZIndex]="10000">
+
+              <input id="username" type="text" class="form-control" placeholder="Nombres" aria-label="Username" aria-describedby="basic-addon1"><br>
+              <input id="apellido" type="text" class="form-control" placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1"><br>
+              <input id="cedula" type="text" class="form-control" placeholder="Cedula" aria-label="Username" aria-describedby="basic-addon1"><br>
+              <input id="direccion" type="text" class="form-control" placeholder="Direccion" aria-label="Username" aria-describedby="basic-addon1"><br>
+              <input id="email" type="text" class="form-control" placeholder="email" aria-label="Username" aria-describedby="basic-addon1">
+
+              <p-footer>
+                <button type="button" pButton icon="pi pi-check" (click)="cambiarFactura();display=false" label="Guardar"></button>
+                <button type="button" pButton icon="pi pi-close" (click)="display=false" label="Cancelar" class="ui-button-secondary"></button>
+              </p-footer>
+            </p-dialog>
+
+            <button type="button" (click)="showDialog()" pButton icon="pi pi-info-circle" label="Editar Informacion"></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -26,69 +96,61 @@
 <br>
 <div class="row">
   <div class="col-sm-2"></div>
+  <div class="col-sm-8"><strong>Libros añadidos</strong></div>
+  <div class="col-sm-2"></div>
+</div>
+<br>
+<br>
+<div class="row" *ngFor="let compra of arregloLibros">
+  <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <div class="row">
-      <div class="col-sm-6">
+    <div class="card bg-light mb-3" style="max-width: 700rem;">
+      <div class="card-header">{{compra[0].nombre}}</div>
+      <div class="card-body">
         <div class="row">
-          <div class="col-sm">Datos de facturacion</div>
-        </div>
-        <div class="row">
-          <div class="col-sm">------datos-----</div>
-        </div>
-        <div class="row">
-          <div class="col-sm">-----direccion----------</div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <br>
-        <ng-template #content let-c="close" let-d="dismiss">
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-2">
+            <img [src]="compra[0].imgLibro" style="height: 80px">
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="dateOfBirth">Date of birth</label>
-                <div class="input-group">
-                  <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
-                      <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
-                    </button>
-                  </div>
-                </div>
+          <div class="col-sm-9">
+            <div class="row">
+              <div class="col-sm-4">
+                <strong>ICBN: </strong>{{compra[0].icbn}}
+                <br>
+                <strong>Num. de páginas: </strong>{{compra[0].numeroPaginas}}
+                <br>
+                <strong>Edición: </strong>{{compra[0].edicion}}
               </div>
-            </form>
+              <div class="col-sm-4">
+                <strong>Fecha de publicación: </strong>{{compra[0].fechaPublicacion}}
+                <br>
+                <strong>Nombre de la editorial: </strong>{{compra[0].nombreEditorial}}
+              </div>
+              <div class="col-sm-4" align="center">
+                <br>
+                <button pButton type="button" label="Eliminar"  class="ui-button-danger"></button>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-          </div>
-        </ng-template>
-
-        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-
-        <hr>
-
-        <pre>{{closeResult}}</pre>
-
+        </div>
       </div>
     </div>
   </div>
   <div class="col-sm-2"></div>
+
 </div>
 <br>
 <br>
-<div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">Componentes</div>
-  <div class="col-sm-2"></div>
-</div>
+
+
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8"></div>
-  <div class="col-sm-2">TOTAL: XXXX</div>
+  <div class="col-sm-2">TOTAL: {{busquedaCompras.length}}</div>
 
 </div>
+
+
+
+
+

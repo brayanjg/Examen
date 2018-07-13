@@ -1,4 +1,24 @@
+<br>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div class="row">
+      <div class="col-sm-5" align="right">
 
+      </div>
+      <div class="col-sm-2" align="right">
+        <mat-icon [matBadge]="busquedaCompras.length" matBadgeColor="warn" routerLink="/Carrito" >shopping_cart</mat-icon>
+      </div>
+      <div class="col-sm-3">
+        <img src="https://www.freeiconspng.com/uploads/profile-icon-9.png" alt="" style="height: 30px">
+        Usuario</div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" align="center">
@@ -17,7 +37,7 @@
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
     <div class="row">
-      <div class="col-sm"><h4><strong>Modelos Papa</strong></h4></div>
+      <div class="col-sm"><h4><strong>Autores</strong></h4></div>
     </div>
     <br>
     <div class="row" align="center">
@@ -50,11 +70,11 @@
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
     <div class="row">
-      <div class="col-sm"><h4><strong>Modelos Hijo</strong></h4></div>
+      <div class="col-sm"><h4><strong>Libros</strong></h4></div>
     </div>
     <br>
     <div class="row" align="center">
-      <div class="col-sm-3" *ngFor="let libros of resultadosLib">
+      <div class="col-sm-3" *ngFor="let libros of resultadosLib" routerLink="/ModeloPapa/{{libros.autorId}}/ModeloHijo/{{libros.id}}">
         <app-card-hijo [nombre]="libros.nombre" [fecha]="libros.fechaPublicacion" [img]="libros.imgLibro" routerLink="/ModeloHijo"></app-card-hijo>
       </div>
       <div class="col-sm-3">{{mensajeL}}</div>
