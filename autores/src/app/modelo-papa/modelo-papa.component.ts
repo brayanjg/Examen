@@ -9,6 +9,8 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./modelo-papa.component.css']
 })
 export class ModeloPapaComponent implements OnInit {
+  push =0;
+  librosParaMostrar=[]
   busqueda
   busquedaLibros
   busquedaCompras
@@ -66,6 +68,7 @@ export class ModeloPapaComponent implements OnInit {
               document.getElementById("botonCargarMas").hidden = false
             }
           }
+          this.paginator()
         }
 
       )
@@ -91,6 +94,9 @@ export class ModeloPapaComponent implements OnInit {
               (dataAut:any[]) => {
                 console.log(dataAut)
                 this.busquedaCompras = dataAut
+
+
+
               }
 
             )
@@ -100,7 +106,31 @@ export class ModeloPapaComponent implements OnInit {
 
   }
 
-
+  paginator(){
+    if(this.busquedaLibros.length<8){
+      document.getElementById('botonCargarMas').hidden = true
+      for (let i =0;i<this.busquedaLibros.length;i++){
+        //console.log(i)
+        this.librosParaMostrar.push(this.busquedaLibros[i])
+      }
+    }
+    else {
+    for (let i =0;i<8;i++){
+      //console.log(i)
+      this.librosParaMostrar.push(this.busquedaLibros[i])
+    }
+    console.log(this.librosParaMostrar)}
+  }
+  masLibros(){
+    this.librosParaMostrar=[]
+    for (let i=(8*(this.push+1));i<(this.busquedaLibros.length-8*this.push);i++){
+      this.librosParaMostrar.push(this.busquedaLibros[i])
+    }
+    if(this.librosParaMostrar.length<=8){
+      document.getElementById("botonCargarMas").hidden = true
+    }
+    this.push = this.push+1
+  }
 }
 
 

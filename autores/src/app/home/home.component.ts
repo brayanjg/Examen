@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   busquedaCompras
   listaComp
   idCompra=0
+  librosParaMostrar=[]
+  push=0
   constructor(private http: HttpClient)
   {
     }
@@ -64,7 +66,7 @@ getAutor (){
   }
   buscarLibro(){
 
-    this.http.get(`http://localhost:1337/libro?id=${this.buscar}`)
+    this.http.get(`http://localhost:1337/libro?autorId=${this.buscar}`)
       .subscribe(
         (dataLib:any[]) => {
           console.log(dataLib)
@@ -77,7 +79,10 @@ getAutor (){
             this.mensajeL = " "
             this.resultadosLib = this.busqueda
 
-          }
+            this.paginator()}
+
+
+
         }
 
       )
@@ -113,6 +118,7 @@ getAutor (){
             .subscribe(
               (dataAut:any[]) => {
                 this.busquedaCompras = dataAut
+
               }
 
             )
@@ -121,7 +127,36 @@ getAutor (){
       )
 
   }
+  masLibros(){
+    this.librosParaMostrar=[]
+    for (let i=(8*(this.push+1));i<(this.resultadosLib.length-8*this.push);i++){
+      this.librosParaMostrar.push(this.resultadosLib[i])
+    }
+    if(this.librosParaMostrar.length<8){
+      document.getElementById("botonLibro").hidden = true
+    }
+    this.push = this.push+1
+  }
+  paginator(){
+    if(this.resultadosLib.length<8){
+      document.getElementById('botonLibro').hidden = true
+      for (let i =0;i<this.resultadosLib.length;i++){
+        //console.log(i)
+        this.librosParaMostrar.push(this.resultadosLib[i])
+      }
+    }
+    else{
+      document.getElementById('botonLibro').hidden = false
+    for (let i =0;i<8;i++){
+      //console.log(i)
+      this.librosParaMostrar.push(this.resultadosLib[i])
+    }
+    console.log('El resultado es:')
+    console.log(this.librosParaMostrar)}
+  }
 
-
+  vaciar(){
+    this.librosParaMostrar=[]
+  }
 }
 

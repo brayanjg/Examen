@@ -20,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { CardPadreComponent } from './card-padre/card-padre.component';
 import { CardHijoComponent } from './card-hijo/card-hijo.component';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {PaginatorModule} from 'primeng/paginator';
 import {DialogModule} from 'primeng/dialog';
 
 
@@ -51,7 +52,9 @@ import {DialogModule} from 'primeng/dialog';
     MatIconModule,
     HttpClientModule,
     MatCardModule,
-    DialogModule
+    DialogModule,
+    PaginatorModule,
+    MatPaginatorModule
 
 
 

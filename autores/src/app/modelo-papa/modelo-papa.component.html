@@ -19,6 +19,7 @@
 </div>
 <br>
 <br>
+
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-4">
@@ -59,9 +60,11 @@
     </div>
     <br>
     <div class="row" align="center">
-      <div class="col-sm-3" *ngFor="let libro of busquedaLibros" routerLink="ModeloHijo/{{libro.id}}">
+
+      <div class="col-sm-3" *ngFor="let libro of librosParaMostrar" routerLink="ModeloHijo/{{libro.id}}">
         <app-card-hijo [nombre]="libro.nombre" [fecha]="libro.fechaPublicacion" [img]="libro.imgLibro"></app-card-hijo>
       </div>
+
       <div class="col-sm-3">{{mensaje}}</div>
       <div class="col-sm-3"></div>
       <div class="col-sm-3"></div>
@@ -76,7 +79,7 @@
     <br>
     <div class="row" align="center">
       <div class="col-sm">
-        <button mat-button id="botonCargarMas" hidden=true>Cargar más</button>
+        <button mat-button id="botonCargarMas" (click)="masLibros()">Cargar más</button>
       </div>
     </div>
   </div>

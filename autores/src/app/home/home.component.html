@@ -24,7 +24,7 @@
   <div class="col-sm-8" align="center">
       <div class="ui-g-14 ui-md-4">
         <div class="ui-inputgroup">
-          <button pButton type="button" label="Buscar" (click)="buscarAutorLibro();buscarLibro()"></button>
+          <button pButton type="button" label="Buscar" (click)="buscarAutorLibro();buscarLibro(); vaciar()"></button>
           <input type="text" (keyup)="onNameKeyUp($event)" pInputText placeholder="busque por autor o por libro">
         </div>
       </div>
@@ -74,7 +74,7 @@
     </div>
     <br>
     <div class="row" align="center">
-      <div class="col-sm-3" *ngFor="let libros of resultadosLib" routerLink="/ModeloPapa/{{libros.autorId}}/ModeloHijo/{{libros.id}}">
+      <div class="col-sm-3" *ngFor="let libros of librosParaMostrar" routerLink="/ModeloPapa/{{libros.autorId}}/ModeloHijo/{{libros.id}}">
         <app-card-hijo [nombre]="libros.nombre" [fecha]="libros.fechaPublicacion" [img]="libros.imgLibro" routerLink="/ModeloHijo"></app-card-hijo>
       </div>
       <div class="col-sm-3">{{mensajeL}}</div>
@@ -91,7 +91,7 @@
     <br>
     <div class="row" align="center">
       <div class="col-sm">
-        <button mat-button id="botonLibro" hidden=true>Cargar más</button>
+        <button mat-button id="botonLibro" (click)="masLibros()" hidden= true>Cargar más</button>
       </div>
     </div>
   </div>
