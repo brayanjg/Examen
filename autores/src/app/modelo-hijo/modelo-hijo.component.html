@@ -68,10 +68,19 @@
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" align="center">
-    <button pButton type="button"  label="Añadir al carrito"  class="ui-button-info" (click)="comprar()" routerLink="/home"></button>
+    <button id="botonAgregar" pButton type="button"  label="Añadir al carrito"  class="ui-button-info" (click)="comprar();cambiarEstado()" routerLink="/home"></button>
   </div>
   <div class="col-sm-2"></div>
 
 </div>
+<!--<button (click)="comprobarDisponibilidad()">ingresar</button>
+<button>buscar</button>-->
+<br>
+<div class="row" id="noDisponible" hidden=true>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8" align="center">
+    <img src="https://s3-us-east-2.amazonaws.com/media-files-page/wp-content/uploads/2018/03/04234908/no-disponible.png" alt="">
+  </div>
+  <div class="col-sm-2"></div>
 
-
+</div>

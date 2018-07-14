@@ -146,7 +146,7 @@ export class CarritoComponent implements OnInit {
   }
 
   imprimir(i){
-    /*console.log(i)*/
+
     this.http.get(`http://localhost:1337/libro?id=${i}`)
       .subscribe(
         (dataAut:any[]) => {
@@ -155,7 +155,7 @@ export class CarritoComponent implements OnInit {
         }
 
       )
-    /*this.sleep(4000)*/
+
   }
   sleep(milliseconds) {
     var start = new Date().getTime();
@@ -175,11 +175,11 @@ export class CarritoComponent implements OnInit {
   }
 
   cambiarFactura(){
-    this.nombres= ''+ document.getElementById("username").value
+    /*this.nombres= ''+ document.getElementById("username").value
     this.apellidos= ''+ document.getElementById("apellido").value
     this.cedula= ''+ document.getElementById("cedula").value
     this.direccion= ''+ document.getElementById("direccion").value
-    this.email= ''+ document.getElementById("email").value
+    this.email= ''+ document.getElementById("email").value*/
 
   }
   completarOrden(){
